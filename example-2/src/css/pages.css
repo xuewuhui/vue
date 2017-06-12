@@ -1,0 +1,22 @@
+#app{
+	display: flex;
+	height: 100%;
+}
+.wrap{
+	display: flex;
+	flex:1;
+	flex-direction: column;
+}
+.main{
+	display: flex;
+	flex: 1;
+	flex-direction:row;
+}
+.content{
+	display: flex;
+	flex: 1;
+	border-top:2px solid #e5e5e5
+}
+.pages{
+	margin:40px 30px 0;
+}

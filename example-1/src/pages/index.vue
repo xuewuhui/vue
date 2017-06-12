@@ -2,33 +2,56 @@
   <div id="app">
   	<h1>{{msg}}</h1>
     <h2>{{bar}}</h2>
-  	<ul>
+  	<!-- <ul>
   		<li><router-link to="/list">list</router-link></li>
   		<li><router-link to="/welcome">welcome</router-link></li>
-  	</ul>
-    <List v-if="showList"></List>
-    <button class="btn-show-welcome" :disabled="isDisabled" @click="onShowWecComClick">{{buttonText}}</button>
-    <Welcome v-if="showWelcome" :user-name="userName" :foo.sync="bar" @update:foo="val => bar = val"></Welcome>
+  	</ul> -->
+    <!-- 导航 -->
+    <Navigator :active="1"></Navigator>
+
+    <!-- 计数器 - data必须是函数 -->
+    <div>
+      <Counter></Counter>
+      <Counter></Counter>
+      <Counter></Counter>
+    </div>
+    
+    <!-- 按钮 - 显示隐藏子模板 -->
+    <button class="btn-show-welcome" :disabled="isDisabled" @click="onShowWecComClick">{{buttonText}}</button><br/>
+
+    <!-- 按钮 - 改变candidateName值 -->
+    <button @click="onChangeText">改变父组件值并传递到子模板中</button>
+
+    <!-- 子模板 -->
+    <Welcome v-if="showWelcome" message="这是一个欢迎组件" user-message="张含韵本周日来南京" :user-type="1" :user-name="candidateName" :foo.sync="bar" @update:foo="val => bar = val"></Welcome>
+
+    <!-- 分页 -->
+    <Page></Page>
+
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import List from './list'
+import Navigator from './nav'
 import Welcome from './welcome'
+import Counter from './counter'
+import Page from './page1'
 export default {
   components: {
-    List,
-    Welcome
+    Welcome,
+    Navigator,
+    Counter,
+    Page
   },
   data () {
     return {
       msg: 'This is a demo!',
-      userName: 'xuewuhui',
+      candidateName: 'xuewuhui',
       buttonText: 'show welcome component',
-      bar: 'This is a welcome page!',
+      bar: 'This is a parent component text!',
       isDisabled: false,
-      showList: false,
       showWelcome: false
     }
   },
@@ -53,6 +76,9 @@ export default {
         el.setAttribute('class','btn-hide-welcome')
       }
     },
+    onChangeText () {
+      this.candidateName = 'Hello world!'
+    },
     resetForm () {
       console.log('resetForm')
     }
@@ -72,4 +98,5 @@ export default {
 .btn-hide-welcome{
   background-color: #666;
 }
+@import '../css/reset.css';
 </style>

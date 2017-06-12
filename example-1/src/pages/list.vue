@@ -7,14 +7,20 @@
 		<!-- params参数必跳转路由名称才能传递 -->
 		<!-- <router-link :to="{name: 'viewCom', params: {id: 12212}}">welcome</router-link> -->
 		<ul v-if="listData">
-			<li v-for="item in listData" @click="onOpenViewClick(item.id)">{{item.name}}</li>
+			<li v-for="item in listData" @click="onOpenViewClick(item.id)">
+        {{item.name}}
+        <!-- {{item.end_time | formateDate}} -->
+        {{item.end_time | formateDate('arg1','arg2')}}
+      </li>
 		</ul>
 	</div>
 </template>
 
 <script type="text/javascript">
 import $ from '../js/jquery'
-import utils from '../js/utils'
+import Fetch from '../js/fetch'
+import Utils from '../common/Utils'
+
 export default {
   data () {
     return {
@@ -25,7 +31,7 @@ export default {
     }
   },
   created () {
-  	utils.setItem('token','d4ac3e2c55c68db6be6f589e5448d2b9c1804bac')
+  	Fetch.setItem('token','d4ac3e2c55c68db6be6f589e5448d2b9c1804bac')
     // 组件创建完成后获取数据
     this.fetchListData()
   },
@@ -35,12 +41,21 @@ export default {
   		return this.msg.split('').reverse().join('')
   	}
   },
+  filters: {
+    // 过滤器，用于常见的文本格式化，可用于mustache插值和v-bind表达式
+    // {{date | formateDate}}
+    // <div v-bind:date="new Date() | formateDate"></div>
+    // 过滤器函数总接受表达式的值作为第一个参数
+    formateDate () {
+      return Utils.formatDateToDays(arguments[0])
+    }
+  },
   methods: {
   	onOpenViewClick (id) {
-  		this.$router && this.$router.push && this.$router.push({name: 'viewCom', params: {id: id}})
+  		this.$router && this.$router.push && this.$router.push({name: 'viewCom', params: {id: id, orginal: 1}})
   	},
     fetchListData () {
-      utils.get(
+      Fetch.get(
       	'http://consultant.mps5dev.gikoo.cn/api/v1/consultant_task/position/my/?page=1&count=20',
       	(data)=>{
       		console.log(data)

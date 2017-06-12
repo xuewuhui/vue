@@ -1,0 +1,102 @@
+@import './bootstrap.min.css';
+a, div, input, textarea {
+    outline: 0
+}
+
+body, dd, dl, dt, form, h1, h2, h3, h4, html, input, li, ol, p, textarea, ul {
+    margin: 0;
+    padding: 0
+}
+
+input, textarea {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px
+}
+
+dl, ol, ul {
+    list-style: none
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: "微软雅黑", "华文细黑", Arial, Helvetica, sans-serif;
+    background-color: #FFF;
+    font-size: 14px;
+    /*color: #6c6c6c*/
+}
+
+img {
+    border: none
+}
+
+h1, h2, h3 {
+    font-weight: 400
+}
+
+a {
+    text-decoration: none
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.clear {
+    clear: both
+}
+.tr{
+    text-align: center;
+}
+.tm{
+	text-align: center;
+}
+.hidden{
+    display: none;
+}
+.btn-style{
+    cursor: pointer;
+}
+.no-padding {
+    padding: 0 !important
+}
+.no-margin {
+    margin: 0 !important
+}
+/*
+ *分页样式
+*/
+.pagination-total{
+	padding:6px 12px;
+	margin:20px 0;
+	display: inline-block;
+	vertical-align: top;
+}
+.pagination-total em{
+    margin: 0 4px;
+	color:red;
+	font-style: normal;
+}
+.pagination-search{
+	width: 80px;
+	margin:20px 0;
+	display: inline-block;
+	vertical-align: top;
+}
+.pagination-search .form-control{
+	width: 40px !important;
+	padding: 6px !important;
+}
+.pagination-search .btn-default{
+	padding: 6px !important;
+}
+
+
+
+

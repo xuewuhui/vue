@@ -20,7 +20,7 @@ export default {
 
 		//timastamp
 		url += url.indexOf('?') > -1 ? '&' : '?';
-		url += 'gk_ajax_timestamp = '+Date.parse(new Date())+'';
+		url += 'gk_ajax_timestamp='+Date.parse(new Date())+'';
 		
 		fetch(url, {
 				method: 'get',
