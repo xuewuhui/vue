@@ -1,9 +1,9 @@
 <template>
-	<div class="info" :style="{height:Height + 'px'}">
+	<div class="info">
 		<swiper :options="swiperOption" ref="mySwiper" >  
       <!-- 这部分放你要渲染的那些内容 -->  
       <swiper-slide v-for="item in data" :key="item"> 
-      	<img :src="item" @load='imgHeight' />
+      	<img :src="item" />
       </swiper-slide>  
       <!-- 这是轮播的小圆点 -->  
       <div class="swiper-pagination" slot="pagination"></div>  
@@ -70,19 +70,6 @@ export default {
 			oringalPdf = res.data
 		},
 
-		imgHeight:function(e){
-			console.log(e)
-			console.log(e.detail)
-
-			return
-		  var imgh=e.detail.height;//图片高度
-		  var imgw=e.detail.width;//图片宽度
-		  var swiperH=winWid*imgh/imgw + "px"//等比设置swiper的高度。 即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
-
-			//设置高度
-		  this.Height = swiperH
-
-		},
 
 	},
 }
@@ -94,23 +81,24 @@ export default {
 		width: 600px;
 		height: 400px;
 		background-color: #000;
-		overflow: auto
-	}
-	.info img{
-		max-width: 100%;
-		height: auto;
 	}
 	.swiper-container{
 		width: 100%;
 		height: 100%;
-		overflow: auto;
 	}
 	.swiper-slide{
 		height: 100%;
+		line-height: 400px;
 		text-align: center;
-		/*display: flex;
-		justify-content: center;*/
-		/*align-items: center;*/
+		overflow: auto;
 	}
+	.swiper-slide img{
+		max-width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+
+
 
 </style>

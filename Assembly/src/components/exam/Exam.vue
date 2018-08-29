@@ -1,6 +1,6 @@
 <template>
 	<div class="exam">
-		<ExamItem ref="ExamItem" v-for="item in 3" :key="item.title" :data="list[item-1]"></ExamItem>
+		<ExamItem ref="ExamItem" v-for="item in 3" :key="item.title" :order="item" :data="list[item-1]"></ExamItem>
 		<el-button @click="handleGetQs">获取问题</el-button>
 	</div>
 </template>
@@ -24,7 +24,7 @@ export default {
 						option_3: '13',
 						option_4: '14',
 					},
-					answer: 1,
+					answer: 2,
 				},
 				{
 					title: '222',
@@ -34,10 +34,9 @@ export default {
 						option_3: '23',
 						option_4: '24',
 					},
-					answer: 2,
+					answer: 3,
 				},
 			],
-			qs: [],
 		}
 	},
 	mounted() {

@@ -5,7 +5,7 @@
 
 		  <el-form-item label="问题题目：">
 		    <div class="flex-middle">
-		    	1、<el-input v-model="form.title"></el-input>
+		    	{{order}}、<el-input v-model="form.title"></el-input>
 		    </div>
 		  </el-form-item>
 
@@ -39,28 +39,24 @@
 
 		</el-form>
 
-		<!-- <el-button @click="handleGetQs">获取问题</el-button> -->
-
-
-
 	</div>
 </template>
 
 <script type="text/javascript">
 export default {
 	name: 'ExamItem',
-	props: ['data'],
+	props: ['order', 'data'],
 	data() {
 		return {
 			form: {
-				title: this.data && this.data.title,
+				title: this.data && this.data.title || '',
 				options: {
-					option_1: this.data && this.data.options && this.data.options.option_1,
-					option_2: this.data && this.data.options && this.data.options.option_2,
-					option_3: this.data && this.data.options && this.data.options.option_3,
-					option_4: this.data && this.data.options && this.data.options.option_4,
+					option_1: this.data && this.data.options && this.data.options.option_1 || '',
+					option_2: this.data && this.data.options && this.data.options.option_2 || '',
+					option_3: this.data && this.data.options && this.data.options.option_3 || '',
+					option_4: this.data && this.data.options && this.data.options.option_4 || '',
 				},
-				answer: this.data && this.data.answer,
+				answer: this.data && this.data.answer || '',
 			},
 
 		}
