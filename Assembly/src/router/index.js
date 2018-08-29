@@ -5,7 +5,7 @@ import Map from '@/components/Map'
 import Tree from '@/components/Tree'
 import Crpopper from '@/components/Crpopper'
 import Swiper from '@/components/Swiper'
-import Validator from '@/components/Validator'
+import Exam from '@/components/exam/Exam'
 
 Vue.use(Router)
 
@@ -37,9 +37,9 @@ export default new Router({
       component: Swiper
     },
     {
-      path: '/validator',
-      name: 'Validator',
-      component: Validator
+      path: '/exam',
+      name: 'Exam',
+      component: Exam
     },
   ]
 })

@@ -12,6 +12,9 @@ import VueKindEditor from 'vue-kindeditor'
 import '../static/kindeditor/kindeditor-all.js'
 import '../static/kindeditor/themes/default/default.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import '../static/css/public.css'
+
+
 Vue.use(VueAwesomeSwiper)
 Vue.use(Validator)
 
