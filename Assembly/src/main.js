@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import Validator from 'vue-validator'
 import {Alert, Confirm, Toast} from 'wc-messagebox'
+import echarts from 'echarts'
 import 'element-ui/lib/theme-chalk/index.css'
 // 引入 vue-kikindeditor 需要的文件
 import VueKindEditor from 'vue-kindeditor'
@@ -17,6 +18,7 @@ import '../static/css/public.css'
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(Validator)
+Vue.prototype.$echarts = echarts
 
 let options = {
     title: '',  // 默认无标题
@@ -38,6 +40,34 @@ Vue.use(Toast, options)
 
 // 注册 vue-kikindeditor plugin
 Vue.use(VueKindEditor)
+
+Vue.directive('authrization-admin', {
+  bind: function(el, arg){
+     console.log(arg)
+     console.log(arg.value)
+     console.log(typeof arg.value)
+    // console.log(binding)
+    // console.log(vnode)
+    let permissions = ['course-create', 'course-edit', 'course-delete', 'exam-create', 'exam-edit', 'exam-delete']
+    let permitRoles
+    if(typeof arg.value === "string"){
+      permitRoles = [arg.value]
+    }else{
+      permitRoles = arg.value
+    }
+
+    console.log(permitRoles)
+    console.log(permissions)
+    return
+
+    if(permissions.some((role) => permitRoles.indexOf(role) > -1)){
+      el.style.display = 'inline-block'
+         
+    }else{
+      el.style.display = 'none'
+    }
+  }
+})
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
